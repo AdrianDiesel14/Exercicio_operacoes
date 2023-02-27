@@ -90,28 +90,11 @@ public class CalculadoraController {
     return Math.pow(base, expoente);
   }
   
-  @GetMapping("/raizquadrada")
-  public Double raizQuadrada(@RequestParam String numero) {
-      try {
-          Double num = conversorNumerico.converteParaDouble(numero);
-          return Calculadora.raizQuadrada(num);
-      } catch (NumberFormatException e) {
-          throw new IllegalArgumentException("Número inválido");
-      } catch (IllegalArgumentException e) {
-          throw new IllegalArgumentException("Número negativo");
-      }
-  }
 
-  @GetMapping("/raizquadrada/{numero}")
-  public Double raizQuadradaPath(@PathVariable String numero) {
-      try {
-          Double num = conversorNumerico.converteParaDouble(numero);
-          return Calculadora.raizQuadrada(num);
-      } catch (NumberFormatException e) {
-          throw new IllegalArgumentException("Número inválido");
-      } catch (IllegalArgumentException e) {
-          throw new IllegalArgumentException("Número negativo");
-      }
-  }
 
-}
+  @PostMapping("/raizquadrada")
+  public double raizQuadrada(@RequestParam double numero1) {
+    return Math.sqrt(numero1);
+  }
+  
+} 
